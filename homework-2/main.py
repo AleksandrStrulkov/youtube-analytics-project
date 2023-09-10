@@ -1,7 +1,7 @@
 from src.channel import Channel
 
 if __name__ == '__main__':
-    moscowpython = Channel('UC-OVMPlMA3-YCIeg4z5z23A')
+    moscowpython = Channel('UC9MK8SybZcrHR3CUV4NMy2g')
 
     # получаем значения атрибутов
     print(moscowpython.title)  # MoscowPython
@@ -9,7 +9,7 @@ if __name__ == '__main__':
     print(moscowpython.url)  # https://www.youtube.com/channel/UC-OVMPlMA3-YCIeg4z5z23A
 
     # менять не можем
-    moscowpython.channel_id = 'Новое название'
+    # moscowpython.channel_id = 'Новое название'
     # AttributeError: property 'channel_id' of 'Channel' object has no setter
 
     # можем получить объект для работы с API вне класса
