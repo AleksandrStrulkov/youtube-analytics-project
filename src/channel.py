@@ -19,6 +19,9 @@ class Channel:
         self.subscriberCount = int(self.info["items"][0]["statistics"]["subscriberCount"])
         self.video_count = self.info["items"][0]["statistics"]["videoCount"]
 
+    def __str__(self):
+        return f'{self.title} ({self.url})'
+
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
         channel = self.get_service().channels().list(id=self.channel_id,
