@@ -24,7 +24,7 @@ class Channel:
         return f'{self.title} ({self.url})'
 
     def __add__(self, other):
-        """Ссумирует количество подписчиков в двух каналах."""
+        """Суммирует количество подписчиков в двух каналах."""
         return self.subscriberCount + other.subscriberCount
 
     def __sub__(self, other):
