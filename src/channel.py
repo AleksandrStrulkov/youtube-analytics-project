@@ -19,6 +19,30 @@ class Channel:
         self.subscriberCount = int(self.info["items"][0]["statistics"]["subscriberCount"])
         self.video_count = self.info["items"][0]["statistics"]["videoCount"]
 
+    def __str__(self):
+        return f'{self.title} ({self.url})'
+
+    def __add__(self, other):
+        return self.subscriberCount + other.subscriberCount
+
+    def __sub__(self, other):
+        return self.subscriberCount - other.subscriberCount
+
+    def __eq__(self, other):
+        return self.subscriberCount == other.subscriberCount
+
+    def __lt__(self, other):
+        return self.subscriberCount < other.subscriberCount
+
+    def __gt__(self, other):
+        return self.subscriberCount > other.subscriberCount
+
+    def __ge__(self, other):
+        return self.subscriberCount >= other.subscriberCount
+
+    def __le__(self, other):
+        return self.subscriberCount <= other.subscriberCount
+
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
         channel = self.get_service().channels().list(id=self.channel_id,
@@ -45,3 +69,4 @@ class Channel:
                 "channel_views": self.viewCount}
         with open(json_name, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=2, ensure_ascii=False)
+
