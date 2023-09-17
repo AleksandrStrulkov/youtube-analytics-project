@@ -20,27 +20,35 @@ class Channel:
         self.video_count = self.info["items"][0]["statistics"]["videoCount"]
 
     def __str__(self):
+        """Выводит в консоль информацию о канале."""
         return f'{self.title} ({self.url})'
 
     def __add__(self, other):
+        """Ссумирует количество подписчиков в двух каналах."""
         return self.subscriberCount + other.subscriberCount
 
     def __sub__(self, other):
+        """Выводит разницу подписчиков в двух каналах."""
         return self.subscriberCount - other.subscriberCount
 
     def __eq__(self, other):
+        """Сравнивает количество подписчиков в двух каналах"""
         return self.subscriberCount == other.subscriberCount
 
     def __lt__(self, other):
+        """Выводит булево значение сравнения подписчиков в двух каналах."""
         return self.subscriberCount < other.subscriberCount
 
     def __gt__(self, other):
+        """Выводит булево значение сравнения подписчиков в двух каналах."""
         return self.subscriberCount > other.subscriberCount
 
     def __ge__(self, other):
+        """Выводит булево значение сравнения подписчиков в двух каналах."""
         return self.subscriberCount >= other.subscriberCount
 
     def __le__(self, other):
+        """Выводит булево значение сравнения подписчиков в двух каналах."""
         return self.subscriberCount <= other.subscriberCount
 
     def print_info(self) -> None:
@@ -51,11 +59,12 @@ class Channel:
 
     @classmethod
     def get_service(cls):
+        """Возвращает экземпляр API"""
         return Channel.youtube
 
     @property
     def channel_id(self):
-        """Channel ID getter"""
+        """Получение id канала."""
         return self.__channel_id
 
     def to_json(self, json_name):
