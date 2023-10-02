@@ -4,14 +4,23 @@ from googleapiclient.discovery import build
 
 
 class Video:
-	"""Класс для работы с видео"""
+	"""Класс для работы с видео c реализацией исключений"""
 	def __init__(self, video_id: str):
 		self.video_id = video_id
-		self.info = self.get_info()
-		self.title = self.info["items"][0]["snippet"]["title"]
-		self.url = 'https://www.youtube.com/watch?=' + self.video_id
-		self.view_count = self.info["items"][0]["statistics"]["viewCount"]
-		self.video_likes = self.info["items"][0]["statistics"]["likeCount"]
+		try:
+			self.info = self.get_info()
+			self.title = self.info["items"][0]["snippet"]["title"]
+		except IndexError:
+			print(f'Неправильно указан id видео')
+			self.info = None
+			self.title = None
+			self.url = None
+			self.view_count = None
+			self.like_count = None
+		else:
+			self.url = 'https://www.youtube.com/watch?=' + self.video_id
+			self.view_count = self.info["items"][0]["statistics"]["viewCount"]
+			self.like_count = self.info["items"][0]["statistics"]["likeCount"]
 
 	def __str__(self):
 		"""Функция, возвращающая строку с информацией для пользователя"""
@@ -35,7 +44,7 @@ class Video:
 				"video_title": self.title,
 				"video_url": self.url,
 				"video_views": self.view_count,
-				"video_likes": self.video_likes}
+				"like_count": self.like_count}
 		with open(json_name, "w", encoding="utf-8") as file:
 			json.dump(data, file, indent=2, ensure_ascii=False)
 
@@ -62,7 +71,7 @@ class PLVideo(Video):
 				"video_title": self.title,
 				"video_url": self.url,
 				"video_views": self.view_count,
-				"video_likes": self.video_likes,
+				"like_count": self.video_likes,
 				}
 		with open(json_name, "w", encoding="utf-8") as file:
 			json.dump(data, file, indent=2, ensure_ascii=False)
