@@ -44,7 +44,7 @@ class Video:
 				"video_title": self.title,
 				"video_url": self.url,
 				"video_views": self.view_count,
-				"video_likes": self.video_likes}
+				"like_count": self.like_count}
 		with open(json_name, "w", encoding="utf-8") as file:
 			json.dump(data, file, indent=2, ensure_ascii=False)
 
@@ -71,7 +71,7 @@ class PLVideo(Video):
 				"video_title": self.title,
 				"video_url": self.url,
 				"video_views": self.view_count,
-				"video_likes": self.video_likes,
+				"like_count": self.video_likes,
 				}
 		with open(json_name, "w", encoding="utf-8") as file:
 			json.dump(data, file, indent=2, ensure_ascii=False)
