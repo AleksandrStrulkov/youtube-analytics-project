@@ -4,7 +4,7 @@ from googleapiclient.discovery import build
 
 
 class Video:
-	"""Класс для работы с видео"""
+	"""Класс для работы с видео c реализацией исключений"""
 	def __init__(self, video_id: str):
 		self.video_id = video_id
 		try:
