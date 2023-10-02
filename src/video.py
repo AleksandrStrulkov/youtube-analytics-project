@@ -16,11 +16,11 @@ class Video:
 			self.title = None
 			self.url = None
 			self.view_count = None
-			self.video_likes = None
+			self.like_count = None
 		else:
 			self.url = 'https://www.youtube.com/watch?=' + self.video_id
 			self.view_count = self.info["items"][0]["statistics"]["viewCount"]
-			self.video_likes = self.info["items"][0]["statistics"]["likeCount"]
+			self.like_count = self.info["items"][0]["statistics"]["likeCount"]
 
 	def __str__(self):
 		"""Функция, возвращающая строку с информацией для пользователя"""
